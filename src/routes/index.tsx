@@ -1,24 +1,59 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/nav";
+import { Hero } from "@/components/hero";
+import { About, Skills, Projects, Focus, Principles, Contact, Footer } from "@/components/sections";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      {
+        title: "Stephen Chijioke Okoronkwo — AI Systems Architect & Founder",
+      },
+      {
+        name: "description",
+        content:
+          "Portfolio of Stephen Chijioke Okoronkwo: AI systems architect, full-stack developer, and founder of ShadowSpark Technologies — building AI automation, backend platforms, and agentic systems for African businesses.",
+      },
+      {
+        property: "og:title",
+        content: "Stephen Chijioke Okoronkwo — AI Systems Architect & Founder",
+      },
+      {
+        property: "og:description",
+        content:
+          "AI automation, backend platforms, and agentic systems for African businesses. Founder of ShadowSpark Technologies.",
+      },
+      { property: "og:type", content: "profile" },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content: "Stephen Chijioke Okoronkwo — AI Systems Architect & Founder",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "AI automation, backend platforms, and agentic systems for African businesses. Founder of ShadowSpark Technologies.",
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen">
+      <div className="backdrop-grid" aria-hidden="true" />
+      <Nav />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Focus />
+        <Principles />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 }
